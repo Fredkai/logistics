@@ -82,5 +82,17 @@
         }
     });
     
+    // Block unwanted popups on load
+    $(document).ready(function() {
+        // Remove any elements with green background popups
+        $('[style*="background"][style*="green"], .popup, .overlay, [class*="popup"], [class*="overlay"]').each(function() {
+            if ($(this).css('position') === 'fixed' || $(this).css('position') === 'absolute') {
+                if ($(this).css('z-index') > 1000) {
+                    $(this).remove();
+                }
+            }
+        });
+    });
+    
 })(jQuery);
 
